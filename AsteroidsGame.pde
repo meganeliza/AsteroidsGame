@@ -1,5 +1,6 @@
 Spaceship ghafa = new Spaceship();
 Star[] starrySky = new Star[350];
+Asteroid[] kaz = new Asteroid[15];
 public void setup() 
 {
   size(800, 600);
@@ -9,6 +10,11 @@ public void setup()
   {
     starrySky[i] = new Star();
   }
+  for(int i = 0; i < kaz.length; i++)
+  {
+    kaz[i] = new Asteroid();
+  }
+  
 }
 
 public void draw() 
@@ -20,6 +26,11 @@ public void draw()
   }
   ghafa.show();
   ghafa.move();
+  for(int i = 0; i < kaz.length; i++)
+  {
+    kaz[i].show();
+    kaz[i].move();
+  }
 }
 
 public void keyPressed(){
