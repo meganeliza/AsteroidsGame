@@ -1,18 +1,19 @@
 Spaceship ghafa = new Spaceship();
 Star[] starrySky = new Star[350];
-Asteroid[] kaz = new Asteroid[15];
+ArrayList <Asteroid> kaz = new ArrayList<Asteroid>(20);
 public void setup() 
 {
-  size(800, 600);
+  size(900, 700);
   ghafa.setDirectionX(0);
   ghafa.setDirectionY(0);
   for(int i = 0; i < starrySky.length; i++)
   {
     starrySky[i] = new Star();
   }
-  for(int i = 0; i < kaz.length; i++)
+  for(int i = 0; i < 20; i++)
   {
-    kaz[i] = new Asteroid();
+    
+    kaz.add(new Asteroid());
   }
   
 }
@@ -26,10 +27,13 @@ public void draw()
   }
   ghafa.show();
   ghafa.move();
-  for(int i = 0; i < kaz.length; i++)
+  for(int i = 0; i < kaz.size(); i++)
   {
-    kaz[i].show();
-    kaz[i].move();
+    kaz.get(i).show();
+    kaz.get(i).move();
+    float d = dist(ghafa.getX(), ghafa.getY(), kaz.get(i).getX(), kaz.get(i).getY());
+    if(d < 20)
+    kaz.remove(i);
   }
 }
 
