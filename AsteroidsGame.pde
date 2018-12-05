@@ -1,6 +1,6 @@
 Spaceship ghafa = new Spaceship();
 Star[] starrySky = new Star[350];
-ArrayList <Asteroid> kaz = new ArrayList<Asteroid>(20);
+ArrayList <Asteroid> kaz = new ArrayList<Asteroid>();
 public void setup() 
 {
   size(900, 700);
