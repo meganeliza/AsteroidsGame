@@ -1,6 +1,7 @@
 Spaceship ghafa = new Spaceship();
 Star[] starrySky = new Star[350];
 ArrayList <Asteroid> kaz = new ArrayList<Asteroid>();
+ArrayList <Bullet> j = new ArrayList<Bullet>();
 public void setup() 
 {
   size(900, 700);
@@ -12,10 +13,9 @@ public void setup()
   }
   for(int i = 0; i < 20; i++)
   {
-    
+
     kaz.add(new Asteroid());
-  }
-  
+  } 
 }
 
 public void draw() 
@@ -34,6 +34,21 @@ public void draw()
     float d = dist(ghafa.getX(), ghafa.getY(), kaz.get(i).getX(), kaz.get(i).getY());
     if(d < 20)
     kaz.remove(i);
+  }
+  for(int nO = 0; nO < j.size(); nO++)
+  {
+    j.get(nO).show();
+    j.get(nO).move();
+    for(int nI = 0; nI < kaz.size(); nI++)
+    {
+      float d = dist(kaz.get(nI).getX(), kaz.get(nI).getY(), j.get(nO).getX(), j.get(nO).getY());
+      if(d < 15)
+        { 
+          j.remove(nO);
+          kaz.remove(nI);
+          break;
+        }
+    }
   }
 }
 
@@ -62,4 +77,10 @@ public void keyPressed(){
   {
     ghafa.accelerate(0.5);
   }
+  //shoot bullets
+  if(key == 'l')
+  {
+    j.add(new Bullet(ghafa));
+  }
+
 }
